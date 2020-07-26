@@ -25,18 +25,25 @@ func main() {
 	})
 
 	e.GET("/config", api.GetConfig)
-
 	e.GET("/symbols", api.Symbols)
+	e.GET("/search", api.Search)
 	// http://localhost:8081/
 	e.Logger.Fatal(e.Start(":8081"))
 
 }
 
 /*
+
+GET /config 304 - - 2.889 ms
+GET /time 200 10 - 0.352 ms
+GET /symbols?symbol=ETHBTC 304 - - 0.483 ms
+GET /history?symbol=ETHBTC&resolution=1D&from=1561564601&to=1595779061 200 22649 - 62.088 ms
+
+
+
 ```js
 GET /symbol_info?group=<group_name>
-GET /symbols?symbol=<symbol>
-GET /search?query=<query>&type=<type>&exchange=<exchange>&limit=<limit>
+
 GET /history?symbol=<ticker_name>&from=<unix_timestamp>&to=<unix_timestamp>&resolution=<resolution>
 GET /marks?symbol=<ticker_name>&from=<unix_timestamp>&to=<unix_timestamp>&resolution=<resolution>
 GET /timescale_marks?symbol=<ticker_name>&from=<unix_timestamp>&to=<unix_timestamp>&resolution=<resolution>

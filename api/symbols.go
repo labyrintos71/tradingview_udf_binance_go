@@ -22,6 +22,9 @@ func findFilter(filters *[]model.SymbolFilter) string {
 // Symbols binance의 심볼을 조회해서 가져다줌
 func Symbols(c echo.Context) error {
 	symbol := c.QueryParam("symbol")
+	if symbol == "" {
+		return c.JSON(http.StatusBadRequest, model.UDFError{S: "error", Errmsg: "symbol" + model.ParameterNotFound})
+	}
 	exchangeInfo := crawler.GetExchangeInfo()
 	for _, symbolInfo := range exchangeInfo.Symbols {
 		if symbolInfo.Symbol == symbol {
@@ -31,7 +34,7 @@ func Symbols(c echo.Context) error {
 			if err != nil {
 				log.Println("Symbols : " + symbolInfo.Symbol)
 				log.Println("TickSize : " + ticksize)
-				return c.JSON(http.StatusInternalServerError, model.UDFError{S: "error", Errmsg: "ticksize calc ERROR"})
+				return c.JSON(http.StatusConflict, model.UDFError{S: "error", Errmsg: "ticksize calc ERROR"})
 			}
 
 			a := &model.Symbol{
