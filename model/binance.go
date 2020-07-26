@@ -2,10 +2,10 @@ package model
 
 //SymbolFilter 심볼 필터, 추후 여러종류 필요함
 type SymbolFilter struct {
-	FilterType string  `json:"filterType"`
-	MinPrice   float64 `json:"minPrice"`
-	MaxPrice   float64 `json:"maxPrice"`
-	TickSize   float64 `json:"tickSize"`
+	FilterType string `json:"filterType"`
+	MinPrice   string `json:"minPrice"`
+	MaxPrice   string `json:"maxPrice"`
+	TickSize   string `json:"tickSize"`
 }
 
 //SymbolInfo 바이낸스 심볼 정보
