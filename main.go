@@ -27,6 +27,7 @@ func main() {
 	e.GET("/config", api.GetConfig)
 	e.GET("/symbols", api.Symbols)
 	e.GET("/search", api.Search)
+	e.GET("/history", api.History)
 	// http://localhost:8081/
 	e.Logger.Fatal(e.Start(":8081"))
 

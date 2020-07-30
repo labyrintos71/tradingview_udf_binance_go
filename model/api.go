@@ -43,3 +43,15 @@ type Symbol struct {
 	HasWeeklyAndMonthly  bool     `json:"has_weekly_and_monthly"`
 	DataStatus           string   `json:"data_status"`
 }
+
+//Symbol historys 출력 데이터
+type Bar struct {
+	S      string  `json:"s"`
+	Errmsg string  `json:"errnsg ,omitempty"`
+	T      int64   `json:"t"`
+	C      float64 `json:"c"`
+	O      float64 `json:"o"`
+	H      float64 `json:"h"`
+	L      float64 `json:"l"`
+	V      float64 `json:"v"`
+}
